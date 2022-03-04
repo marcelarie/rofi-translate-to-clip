@@ -16,7 +16,7 @@ source_language=$(
         | tr -d ' '
 );
 
-text_input=$(echo "" | rofi -width 200 -dmenu -p "Enter Text > " );
+text_input=$( echo "" | rofi -width 200 -dmenu -p "Enter Text > " );
 
 target_language=$(
     echo -e "$languages" \
@@ -27,10 +27,12 @@ target_language=$(
         | tr -d ' '
 );
 
-translation=$(curl -s 'https://libretranslate.de/translate' \
+translation=$(
+    curl -s 'https://libretranslate.de/translate' \
     -H 'Content-Type: application/json' \
     -d "{\"q\":\"$text_input\",\"source\":\"$source_language\",\"target\":\"$target_language\"}" \
-    | jq .translatedText);
+        | jq -r .translatedText
+);
 
 if [[ $translation != 'null' ]]; then
     echo -n $translation | xsel -ib;
