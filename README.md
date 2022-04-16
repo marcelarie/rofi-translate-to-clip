@@ -8,7 +8,8 @@ I recommend putting the script on your path and execute it with a custom key com
 <br>
 Install [`moreutils`](https://github.com/stigtsp/moreutils) so `vim` or `neovim` will be used to get the input
 for the translation.
-<br>
+<br><br>
+
 
 ![rofi-translate](https://user-images.githubusercontent.com/62728887/156833450-8e32c339-d889-4f8d-9f5c-b51e240c490a.gif)
 
@@ -20,7 +21,9 @@ chmod +x ./rofi-translate.sh
 ./rofi-translate.sh
 ```
 
-You will need to install [`rofi`](https://github.com/davatorium/rofi) and
- [`jq`](https://stedolan.github.io/jq/).
+You will need to install:<br>
+- [`rofi`](https://github.com/davatorium/rofi)
+- [`jq`](https://stedolan.github.io/jq/).
+
 
 
