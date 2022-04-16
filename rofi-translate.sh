@@ -16,7 +16,16 @@ source_language=$(
         | tr -d ' '
 );
 
-text_input=$( echo "" | rofi -width 200 -dmenu -p "Enter Text > " );
+if ! command -v vipe; then
+    text_input=$( echo "" | rofi -width 200 -dmenu -p "Enter Text > " );
+else
+    random_id=$(( 1+$RANDOM ));
+    tmp_file="tmp-rofi-translate-$random_id";
+
+    text_input=$(/usr/bin/env xterm -fa FiraCode -fs 10 -e "vipe >> $tmp_file ");
+    text_input=$(cat $tmp_file);
+    rm $tmp_file;
+fi
 
 target_language=$(
     echo -e "$languages" \
